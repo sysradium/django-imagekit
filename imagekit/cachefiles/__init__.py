@@ -99,8 +99,10 @@ class ImageCacheFile(BaseIKFile, ImageFile):
 
         actual_name = self.storage.save(self.name, content)
 
-        # We're going to reuse the generated file, so we need to reset the pointer.
-        content.seek(0)
+        # Commenting the following line to try to circumvent the following issue:
+        # https://github.com/matthewwithanm/django-imagekit/issues/473
+        # (see SKYnv comment)
+        # content.seek(0)
 
         # Store the generated file. If we don't do this, the next time the
         # "file" attribute is accessed, it will result in a call to the storage
